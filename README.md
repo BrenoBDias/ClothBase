@@ -12,7 +12,9 @@ ClothBase is a database designed for artisans to efficiently categorize and stor
 ## Why ClothBase?
 
 Traditional methods of material management can be time-consuming and inefficient. ClothBase offers a modern solution to streamline the process, saving artisans valuable time and resources. By centralizing material information in one accessible platform, ClothBase empowers artisans to make informed decisions and optimize their creative workflow.
+
 ---
+
 ## Reference Images:
 
 ![alt text](https://github.com/BrenoBDias/ClothBase/blob/main/Images/6L0UM5XVMlAAAAAElFTkSuQmCC.png)
