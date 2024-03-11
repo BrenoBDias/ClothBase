@@ -1,0 +1,29 @@
+version: "1.0"
+
+services:
+
+  postgres:
+
+    image: myimage
+    shm_size: 128mb
+    restart: always
+
+    environment:
+
+      - POSTGRES_USER=postgres
+
+      - POSTGRES_PASSWORD=postgres
+    
+    ports:
+      - "5432:5432"
+
+    volumes:
+
+      - :/var/lib/postgresql/data
+
+
+
+
+
+
+
