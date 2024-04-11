@@ -1,4 +1,7 @@
 # escape=`
 FROM postgres
 
-COPY init-user-db.sh /docker-entrypoint-initdb.d
+ENV POSTGRES_PASSWORD docker
+ENV postgres_DB user
+
+COPY clothbase.sql /docker-entrypoint-initdb.d/

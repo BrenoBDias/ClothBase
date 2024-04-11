@@ -1,10 +1,10 @@
-version: "1.0"
+version: "1.1"
 
 services:
 
   postgres:
 
-    image: myimage
+    image: clothbase
     shm_size: 128mb
     restart: always
 
@@ -17,9 +17,11 @@ services:
     ports:
       - "5432:5432"
 
-    volumes:
+  app:
 
-      - :/var/lib/postgresql/data
+      image: my-python-app
+      shm_size: 128mb
+  
 
 
 
