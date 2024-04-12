@@ -4,23 +4,19 @@ services:
 
   postgres:
 
-    image: clothbase
-    shm_size: 128mb
-    restart: always
+    image: postgresdb
 
     environment:
 
       - POSTGRES_USER=postgres
 
       - POSTGRES_PASSWORD=postgres
+
+      - POSTGRES_DB=user
     
     ports:
       - "5432:5432"
 
-  app:
-
-      image: my-python-app
-      shm_size: 128mb
   
 
 

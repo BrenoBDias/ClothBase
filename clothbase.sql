@@ -1,13 +1,12 @@
-CREATE DATABASE clothbase
-USE clothbase
+CREATE TABLE accounts(
+    user_id serial PRIMARY KEY,
+    username VARCHAR( 50 ) UNIQUE NOT NULL,
+    password VARCHAR( 50 ) NOT NULL,
+    email VARCHAR( 255 ) UNIQUE NOT NULL,
+    created_on TIMESTAMP NOT NULL,
+        last_login TIMESTAMP
 
-CREATE TABLE folder (
-    folder_id INT PRIMARY KEY AUTO_INCREMENT,
-    folder_name VARCHAR(50),
 );
 
-
-INSERT INTO folder
-VALUES  ("ROOT"),
-        ("pasta um"),
-        ("pasta dois");
+INSERT INTO accounts(username, password, email, created_on)
+VALUES('user', 'pass', 'test@mail.com', CURRENT_TIMESTAMP);
