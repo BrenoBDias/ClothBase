@@ -2,4 +2,4 @@
 FROM postgres
 
 
-COPY paunomeucu.sql /docker-entrypoint-initdb.d/
+COPY clothbase.sql /docker-entrypoint-initdb.d/
