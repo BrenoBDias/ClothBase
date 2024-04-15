@@ -6,16 +6,30 @@ services:
 
     image: postgresdb
 
+    restart: always
+
     environment:
 
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=breno
 
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=breno
 
       - POSTGRES_DB=clothbase
     
     ports:
       - "5432:5432"
+
+  app:
+    
+    image: clothbase-app
+
+    volumes:
+      - D:/Banco de paninhos/repositório/ClothBase/app:/app
+
+volumes:
+  cloth-app:
+    name: "source-code"
+
 
   
 
