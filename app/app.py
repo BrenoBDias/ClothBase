@@ -1,43 +1,12 @@
-import psycopg2
+import tkinter as tk
+from tkinter.messagebox import showinfo
 
-print("Hello, world")
+root = tk.Tk()
 
-connected = False
-while not connected:
-    try:
-        conn = psycopg2.connect(
-            host="postgres",
-            database="clothbase",
-            user="breno",
-            password="breno")
-        connected = True
-    except: print(ConnectionRefusedError)
+def show_message():
+    showinfo("Some title!","Hello, World!")
 
-cur = conn.cursor()
+btn = tk.Button(root, text="click me!", command=show_message)
+btn.pack()
 
-cur.execute("SELECT * FROM custumer")
-
-rows = cur.fetchall()
-
-for row in rows:
-    print(row)
-
-
-# cur.execute("CREATE TABLE test (id serial PRIMARY KEY, num integer, data varchar);")
-
-# cur.execute("INSERT INTO test (num, data) VALUES (%s, %s)", (100, "abc'def"))
-
-
-
-# loop = True
-# while loop:
-#     if input("want to print some shit?").lower() == "y":
-#         cur.execute("SELECT * FROM test;")
-#         cur.fetchone()(1, 100, "abc'def")
-#     else:
-#         loop = False
-
-# conn.commit()
-
-# cur.close()
-# conn.close()
+root.mainloop()
