@@ -10,6 +10,6 @@ ENV DISPLAY=192.168.15.14:0.0
 
 COPY . .
 
-CMD [ "python", "app.py"]
+CMD [ "python", "main.py"]
 
 
