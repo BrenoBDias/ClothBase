@@ -1,6 +1,6 @@
 from option import Option
-import os
 from icecream import ic
+import os
 
 
 class Display():
@@ -32,13 +32,10 @@ class Menu(Display):
         self.options = options
 
 
-    def show(self) -> None:
+    def show_options(self) -> None:
 
         choice = -1
         while not 1 <= choice <= (len(self.options)+1):
-
-            # self.clear()
-            print("\n\n",self.title,"\n\n")
 
             for option in range(0,len(self.options)):
                 print(f"{option+1}. {self.options[option].getstring()}")
@@ -51,10 +48,13 @@ class Menu(Display):
             
 
             selection = self.options[choice-1]
-            ic(self.options[1].getpath())
-            ic(selection.getpath())
+            # ic(self.options[1].getpath())
+            # ic(selection.getpath())
 
             if type(selection.getpath()) == Menu:
-                selection.getpath().show()
+                selection.getpath().start()
 
 
+    def start(self) ->None:
+        print(f"\n\n{self.title}\n")
+        self.show_options()
