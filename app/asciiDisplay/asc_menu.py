@@ -1,53 +1,47 @@
 from icecream import ic
-from display import Menu
+from menu import Menu
 from option import Option
+import os
+
+def clear() -> None:
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 
-principal = Menu(
-    "Início",
-      [
-          Option("Clientes"),
-          Option("Projetos"),
-          Option("Produtos")
-          ])
+principal = Menu("Início")
 
 
-clientes = Menu(
-    "Clientes",
-      [
-          Option("Menu 2", None),
-          Option("Menu 3", None),
-          Option("voltar", principal)
-          ])
+clientes = Menu("Clients")
 
-projetos = Menu(
-    "Projetos",
-      [
-          Option("Menu 2", None),
-          Option("Menu 3", None),
-          Option("voltar", principal)
-          ])
+produtos = Menu("Produtos")
 
-produtos = Menu(
-    "Produtos",
-      [
-          Option("Menu 2", None),
-          Option("Menu 3", None),
-          Option("voltar", principal)
-          ])
+projetos = Menu("Products")
 
-principal.options[0].setpath(clientes)
-ic(principal.options[0])
+principal.append_option("Clients", clientes)
+principal.append_option("Projects", projetos)
+principal.append_option("Products",produtos)
+
+for i in range(2):
+     produtos.append_option(f"produto {i+1}")
+
+for i in range(5):
+     projetos.append_option(f"projeto {i+1}")
+
+for i in range(2):
+     clientes.append_option(f"cliente {i+1}")
+
+
+
 
 def logo() -> None:
+    # clear()
     logo =  [
     "   _____  _         _    _      ____                     ",
     "  / ____|| |       | |  | |    |  _ \                    ",
     " | |     | |  ___  | |_ | |__  | |_) |  __ _  ___   ___  ",
     " | |     | | / _ \ | __|| '_ \ |  _ <  / _` |/ __| / _ \ ",
     " | |____ | || (_) || |_ | | | || |_) || (_| |\__ \|  __/ ",
-    "  \_____||_| \___/  \__||_| |_||____/  \__,_||___/ \___| v1.0",
+    "  \_____||_| \___/  \__||_| |_||____/  \__,_||___/ \___| v0.1",
     "   Open source product management system made for you."
     ]
     print("\n\n")
@@ -55,14 +49,14 @@ def logo() -> None:
     for line in logo:
         print(line)
     print("\n\n")
-    print("          Press ENTER to continue")
-    print("\n\n")
-    input()
-    principal.show_options()
+    input("              Press ENTER to continue")
+    clear()
+    
 
 
 def main():
     logo()
+    principal.start()
 
 
 
