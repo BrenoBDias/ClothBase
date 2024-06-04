@@ -1,10 +1,8 @@
-version: "1.1"
-
 services:
 
-  postgres:
-
-    image: postgresdb
+  postgres: # host name
+    
+    image: clothbase-db
 
     restart: always
 
@@ -24,7 +22,7 @@ services:
     image: clothbase-app
 
     volumes:
-      - D:/Banco de paninhos/repositório/ClothBase/app:/app
+      - ~/repos/ClothBase/app:/app
 
 volumes:
   cloth-app:
