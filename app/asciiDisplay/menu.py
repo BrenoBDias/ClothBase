@@ -7,16 +7,6 @@ class Display():
 
     def __init__(self, title:str) -> None:
         self.title = title
-
-    # def __repr__(self) -> str:
-
-    #     finalprint= str()
-    #     self.clear()
-    #     for line in self.content:
-    #         finalprint += line + "\n"
-
-    #     return finalprint
-    
     def clear(self) -> None:
         os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -40,15 +30,6 @@ class Menu(Display):
             self.counter += 1
             return target
         raise StopIteration
-
-    # def create_options(self):
-    #     if not self.options:
-    #         self.options.append(Option())
-    #     for i in range(self.optionNumber):
-    #         try:
-    #             self.options[i].getpath()
-    #         except:
-    #             self.options.append(Option(""))
 
     def append_option(self, string:str, path=None)->None:
         if self.options[0].getstring() == "404":
@@ -77,18 +58,17 @@ class Menu(Display):
                 print("Not a valid option. try again")
                 self.start()
 
+            selection = self.options[choice-1]
+
+            if type(selection.getpath()) == Menu:
+                self.clear()
+                selection.getpath().start()
+
+
         except:
             self.clear()
             print("Not a valid option. try again")
             self.start()
-        
-        selection = self.options[choice-1]
-        # ic(self.options[1].getpath())
-        # ic(selection.getpath())
-
-        if type(selection.getpath()) == Menu:
-            self.clear()
-            selection.getpath().start()
 
     def start(self) ->None:
         print(f"\n\n{self.title}\n")

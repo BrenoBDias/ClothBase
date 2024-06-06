@@ -1,0 +1,2 @@
+
+run python docker with -it options to ensure it's attached to the terminal and running in interactive mode
