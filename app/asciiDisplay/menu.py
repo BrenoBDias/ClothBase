@@ -1,5 +1,4 @@
-from option import Option
-from icecream import ic
+from .option import Option
 import os
 
 

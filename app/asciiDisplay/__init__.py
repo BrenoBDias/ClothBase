@@ -1,8 +1,7 @@
 import os
 
-from icecream import ic
-from menu import Menu
-from option import Option
+from .menu import Menu
+from .option import Option
 
 
 def clear() -> None:
@@ -43,6 +42,7 @@ def logo() -> None:
         "  \\_____||_| \\___/  \\__||_| |_||____/  \\__,_||___/ \\___| v0.1",
         "   Open source product management system made for you.",
     ]
+    clear()
     print("\n\n")
     print("\n\n")
     for line in logo:
@@ -52,10 +52,11 @@ def logo() -> None:
     clear()
 
 
-def main():
+def main() -> None:
     logo()
     principal.start()
 
 
 if __name__ == "__main__":
-    main()
+   pass
+   main()
