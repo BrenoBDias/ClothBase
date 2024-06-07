@@ -1,8 +1,7 @@
-from .path import Path
 
 
 class Option:
-    def __init__(self, string: str = "404", path: Path | None = None) -> None:
+    def __init__(self, string: str = "404", path = None) -> None:
         self.string = string
         self.path = path
 
@@ -19,8 +18,7 @@ class Option:
     def getstring(self) -> str:
         return self.string
 
-    def getpath(self) -> Path:
-        if self.path is Path:
+    def getpath(self):
             return self.path
 
     def select(self):

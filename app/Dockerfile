@@ -10,6 +10,6 @@ ENV DISPLAY=192.168.15.14:0.0
 
 COPY . .
 
+VOLUME ~/repos/ClothBase/app /app 
+
 CMD [ "python", "main.py"]
-
-

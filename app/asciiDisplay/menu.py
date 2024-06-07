@@ -1,3 +1,4 @@
+from icecream import ic
 from .option import Option
 import os
 
@@ -55,14 +56,19 @@ class Menu(Display):
 
             if not 1 <= choice <= (len(self.options)):
                 self.clear()
+                ic("not inside choice")
                 print("Not a valid option. try again")
                 self.start()
 
-            selection = self.options[choice-1]
+            selection = self.options[choice-1].getpath()
+            selType = type(selection).__name__
 
-            if type(selection.getpath()) == Menu:
+            ic(selection)
+            input()
+# execution type filter
+            if selType == "Menu":
                 self.clear()
-                selection.getpath().start()
+                selection.start()
 
 
         except:

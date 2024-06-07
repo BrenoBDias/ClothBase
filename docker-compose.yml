@@ -21,6 +21,9 @@ services:
     
     image: clothbase-app
 
+    stdin_open: true
+    tty: true       
+
     volumes:
       - ~/repos/ClothBase/app:/app
 
