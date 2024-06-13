@@ -1,17 +1,17 @@
-import asciiDisplay as dp
-
-menu_names = ["Main Menu", "Clients", "Products", "Projects"]
-menus = {}
-for menu in menu_names:
-
-    print(menu)
-    menus[menu] = dp.Menu(menu) 
+from ascii import Menu
+import app
 
 
-menus["Main Menu"].append_option("Clients", menus["Clients"])
-menus["Main Menu"].append_option("Products", menus["Products"])
-menus["Main Menu"].append_option("Projects", menus["Projects"])
+a = Menu("Main")
+app.seila()
 
-dp.logo()
-menus["Main Menu"].start()
+
+b = Menu("Main", orign = a)
+
+a.append_opts(b)
+
+
+
+a.select()
+
 
