@@ -1,0 +1,29 @@
+.card{
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px hsl(0, 0%, 90%);
+  padding: 20px;
+  padding-bottom: 5px;
+  margin: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+.cardImage{
+  max-width: 100px;
+  height: auto;
+  border-radius: 40%;
+  margin-bottom: 10px;
+}
+
+.cardTitle{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0;
+  color: hsl(0, 0%, 20%);
+}
+
+.cardText{
+  font-family: Helvetica, sans-serif;
+  color: hsl(0, 0%, 20%);
+}
+
