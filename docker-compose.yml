@@ -1,35 +1,45 @@
 services:
 
-  postgres: # host name
+  # postgres: # host name
     
-    image: clothbase-db
+  #   image: clothbase-db
 
-    restart: always
+  #   restart: always
 
-    environment:
+  #   environment:
 
-      - POSTGRES_USER=breno
+  #     - POSTGRES_USER=breno
 
-      - POSTGRES_PASSWORD=breno
+  #     - POSTGRES_PASSWORD=breno
 
-      - POSTGRES_DB=clothbase
+  #     - POSTGRES_DB=clothbase
     
+  #   ports:
+  #     - "5432:5432"
+  frontend:
+
+    image: frontend
+
     ports:
-      - "5432:5432"
+     - "8080:8080"
 
-  app:
-    
-    image: clothbase-app
-
-    stdin_open: true
-    tty: true       
+    # volumes:
+    #   - type: bind
+    #     source: ./container
+    #     target: /app
+    # working_dir: /app
 
     volumes:
-      - ~/repos/ClothBase/app:/app
-
+      - frontend:/app
 volumes:
-  cloth-app:
-    name: "source-code"
+  frontend:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./frontend/container
+
+
 
 
   
