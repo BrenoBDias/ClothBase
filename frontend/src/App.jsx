@@ -1,10 +1,10 @@
-import PP from "./PP.jsx"
+import MyComponent from "./MyComponent.jsx"
 
 function App() {
  
   return (
     <>
-    <PP/>
+    <MyComponent/>
     </>
   )
 }

@@ -1,43 +1,68 @@
 services:
-
-  # postgres: # host name
-    
-  #   image: clothbase-db
-
-  #   restart: always
-
-  #   environment:
-
-  #     - POSTGRES_USER=breno
-
-  #     - POSTGRES_PASSWORD=breno
-
-  #     - POSTGRES_DB=clothbase
-    
-  #   ports:
-  #     - "5432:5432"
-  frontend:
-
-    image: frontend
-
-    ports:
-     - "8080:8080"
-
-    # volumes:
-    #   - type: bind
-    #     source: ./container
-    #     target: /app
-    # working_dir: /app
-
+  api:
+    image: api
+    restart: always
+    ports: 
+     - "8000:8000"
     volumes:
-      - frontend:/app
+     - backend:/app
+
+  postgres: # host name
+    image: postgres 
+    restart: always
+    environment:
+      - POSTGRES_USER=breno
+      - POSTGRES_PASSWORD=breno
+      - POSTGRES_DB=clothbase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresqk/data
+#   frontend:
+
+#     image: frontend
+
+#     ports:
+#      - "8080:8080"
+
+#     # volumes:
+#     #   - type: bind
+#     #     source: ./container
+#     #     target: /app
+#     # working_dir: /app
+
+#     volumes:
+#       - frontend:/app
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=bbaldassin@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=SecretPassword
+    ports:
+      - "80:80"
+      - "443:443"
+
 volumes:
-  frontend:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./frontend/container
+#   frontend:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: ./frontend/container
+
+    postgres_data:
+      driver: local
+      driver_opts:
+        type: none
+        o: bind
+        device: D:/Repos/ClothBase/db/data
+    
+    backend:
+      driver: local
+      driver_opts:
+        type: none
+        o: bind
+        device: D:/Repos/ClothBase/api_project
 
 
 
