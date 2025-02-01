@@ -17,7 +17,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresqk/data
+      - postgres_data:/var/lib/postgresql/data
 #   frontend:
 
 #     image: frontend
@@ -40,7 +40,6 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=SecretPassword
     ports:
       - "80:80"
-      - "443:443"
 
 volumes:
 #   frontend:
