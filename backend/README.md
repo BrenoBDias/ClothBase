@@ -4,7 +4,7 @@
 
 create venv:
 ```
-$virtualenv .venv
+virtualenv .venv
 ```
 
 install poetry:
@@ -17,3 +17,7 @@ install the dependencies:
 poetry install
 ```
 
+initialize the server:
+```
+poetry run fastpi run dev
+```

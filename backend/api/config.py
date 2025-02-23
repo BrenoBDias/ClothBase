@@ -1,7 +1,7 @@
 import json
 
 def get_secrets():
-    with open("D:\\Repos\\ClothBase\\api_project\\api\\secrets.json")as file:
+    with open("E:\\repos\\ClothBase\\backend\\api\\secrets.json")as file:
         secret = json.load(file)
     return secret
 
