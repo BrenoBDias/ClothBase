@@ -1,69 +1,57 @@
-services:
-  api:
-    image: api
-    restart: always
-    ports: 
-     - "8000:8000"
-    volumes:
-     - backend:/app
+version: '3.8'
 
-  postgres: # host name
-    image: postgres 
+services:
+  # api:
+  #   build: ./backend  # Adicione esta linha para construir a imagem
+  #   restart: always
+  #   ports: 
+  #     - "8000:8000"
+  #   environment:
+  #     - DATABASE_URL=postgresql://breno:breno@postgres:5432/clothbase  # Ambiente essencial
+  #   volumes:
+  #     - ./backend:/app  # Modificado para bind mount direto
+  #   depends_on:
+  #     - postgres  # Garante ordem de inicialização
+
+  postgres:
+    image: postgres:15
+    ports:
+      - "5432:5432"
     restart: always
     environment:
       - POSTGRES_USER=breno
       - POSTGRES_PASSWORD=breno
       - POSTGRES_DB=clothbase
-    ports:
-      - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-#   frontend:
+      - .db/data:/var/lib/postgresql/data
 
-#     image: frontend
 
-#     ports:
-#      - "8080:8080"
+  # frontend:
+  #   build: ./frontend  
+  #   ports:
+  #     - "3000:3000"  # Porta padrão do React
+  #   environment:
+  #     - REACT_APP_API_URL=http://api:8000  # Comunicação interna via nome do serviço
+  #   depends_on:
+  #     - api
 
-#     # volumes:
-#     #   - type: bind
-#     #     source: ./container
-#     #     target: /app
-#     # working_dir: /app
-
-#     volumes:
-#       - frontend:/app
   pgadmin:
     image: dpage/pgadmin4:latest
     environment:
       - PGADMIN_DEFAULT_EMAIL=bbaldassin@gmail.com
       - PGADMIN_DEFAULT_PASSWORD=SecretPassword
     ports:
-      - "80:80"
+      - "8080:80"  # Evitar conflito com outros serviços na porta 80
+    depends_on:
+      - postgres
 
-volumes:
-#   frontend:
+# volumes:
+#   postgres_data:
 #     driver: local
 #     driver_opts:
 #       type: none
 #       o: bind
-#       device: ./frontend/container
-
-    postgres_data:
-      driver: local
-      driver_opts:
-        type: none
-        o: bind
-        device: D:/Repos/ClothBase/db/data
-    
-    backend:
-      driver: local
-      driver_opts:
-        type: none
-        o: bind
-        device: D:/Repos/ClothBase/api_project
-
-
+#       device: E:/repos/ClothBase/db/data
 
 
   
